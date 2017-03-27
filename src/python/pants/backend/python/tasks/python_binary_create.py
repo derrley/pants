@@ -58,8 +58,8 @@ class PythonBinaryCreate(PythonTask):
         if not vt.valid:
           self.create_binary(vt.target, vt.results_dir)
 
-        python_pex_product.add(binary, os.path.dirname(pex_path)).append(os.path.basename(pex_path))
-        python_deployable_archive.add(binary, os.path.dirname(pex_path)).append(os.path.basename(pex_path))
+        python_pex_product.add(vt.target, os.path.dirname(pex_path)).append(os.path.basename(pex_path))
+        python_deployable_archive.add(vt.target, os.path.dirname(pex_path)).append(os.path.basename(pex_path))
         self.context.log.debug('created {}'.format(os.path.relpath(pex_path, get_buildroot())))
 
         # Create a copy for pex.
